@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
+<%= @users.each do |user| %>
+    <p>id : <%= user.uid %></p>
+    <p>password : <%= user.pass %></p>
+    <p>
+    <%= link_to '削除', "/users/#{user.id}", method: :delete %>
+    </p>
+<% end %>
+
+<p><%= link_to '新規追加', '/users/new' %></p>
