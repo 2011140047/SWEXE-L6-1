@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_15_095410) do
+ActiveRecord::Schema.define(version: 2022_10_15_102915) do
+
+  create_table "tops", force: :cascade do |t|
+    t.string "uid"
+    t.string "pass"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.string "message"
