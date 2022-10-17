@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
-  resources :users
-  root 'users#index'
+
   resources :tweets
   root 'tweets#index'
-  post 'top/main'
-  root 'top#main'
+  
+  resources :users
+  root 'users#index'
+  
+  get 'top/login'
   post 'top/login'
+  get 'top/main'
+  root 'top#main'
   get 'top/logout'
+  post 'top/logout'
 end

@@ -3,11 +3,10 @@
 <% end %>
 
 <%= @users.each do |user| %>
-    <p>id : <%= user.uid %></p>
-    <p>password : <%= user.pass %></p>
-    <p>
-    <%= link_to '削除', "/users/#{user.id}", method: :delete %>
-    </p>
+    <p><%= user.uid %>
+    <%= user.pass %>
+    <%= link_to '削除', "/users/#{user.id}", method: :delete %></p>
 <% end %>
 
-<p><%= link_to '新規追加', '/users/new' %></p>
+<p><%= link_to '新規ユーザ登録', new_user_path %></p>
+<p><%= link_to 'ツイート一覧', tweets_path %></p>
