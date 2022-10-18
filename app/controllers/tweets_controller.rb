@@ -13,7 +13,6 @@ class TweetsController < ApplicationController
       flash[:notice] = '1レコード追加しました'
       redirect_to root_path
     else
-      #@tweets = Tweet.all
       render tweets_new_path
     end
   end

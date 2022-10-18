@@ -3,7 +3,7 @@
 <% end %>
 
 <%= @tweets.each do |e| %>
-    <%= e.message %>
+    <p><%= e.message %></p>
 <% end %>
 
 <p><%= link_to 'ログイン', top_login_path %></p>

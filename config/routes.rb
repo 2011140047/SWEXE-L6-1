@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   root 'top#main'
   get 'top/logout'
   post 'top/logout'
+  
+  get 'like/create'
+  post 'like/create'
+  resources :likes
+  root 'likes#index'
 end
