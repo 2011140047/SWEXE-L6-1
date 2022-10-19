@@ -8,7 +8,9 @@
 <% end %>
 
 <%= form_for @tweet , tdate: {action: :create} do |f| %>
-    <p><%= f.label :message, 'message' %>
-    <%= f.text_field :message %></p>
+    <p>
+    <%= f.label :message, 'message' %>
+    <%= f.text_field :message %>
+    </p>
     <%= f.submit '登録' %>
 <% end %>

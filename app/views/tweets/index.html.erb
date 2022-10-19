@@ -3,8 +3,12 @@
 <% end %>
 
 <%= @tweets.each do |e| %>
-    <p><%= e.message %></p>
+    <p>
+    <%= e.message %>
+    <%= (Time.current - e.tdate).to_i / 60 %>分前
+    <%= link_to '削除', tweet_path(e.id), method: :delete %>
+    </p>
 <% end %>
 
-<p><%= link_to 'ログイン', top_login_path %></p>
+<p><%= link_to 'ログイン', top_main_path %></p>
 <p><%= link_to 'ユーザ一覧', users_path %></p>

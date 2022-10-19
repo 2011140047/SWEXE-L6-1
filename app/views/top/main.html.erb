@@ -1,10 +1,22 @@
 <% @tweets.each do |e| %>
     <p><%= e.message %>
-    <%= link_to '削除', "/tweets/#{e.id}", method: :delete %>
-    <%= link_to 'いいね', likes_path(tweet_id: e.id), method: :post%>
-    <%= link_to 'いいね削除', "/likes/#{e.id}", method: :delete %></p>
+    <%= (Time.current - e.tdate).to_i / 60 %>分前
+    <%= link_to '削除', tweet_path(e.id), method: :delete %>
+    
+    <% if session[:uid] %>
+        <% if e.likes.count == 0 %>
+            <%= link_to '💖いいね', likes_path(tweet_id: e.id), method: :post%>
+        <% else %>
+            <%= link_to '💔興味なし', like_path(e), method: :delete %>
+        <% end %>
+    <% end %>
+    </p>
 <% end %>
 
-<p><%= link_to 'ツイートする', new_tweet_path %></p>
-<p><%= link_to 'ログアウト', top_logout_path %></p>
-<p><%= link_to 'ユーザ一覧', users_path %></p>
+<% if session[:uid] %>
+    <p><%= link_to 'ツイートする', new_tweet_path %></p>
+    <p><%= link_to 'ログアウト', top_logout_path %></p>
+    <p><%= link_to 'ユーザ一覧', users_path %></p>
+<% else %>
+    <p><%= link_to 'ログイン', top_main_path %></p>
+<% end %>

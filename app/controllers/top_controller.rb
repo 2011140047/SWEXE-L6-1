@@ -1,6 +1,6 @@
 class TopController < ApplicationController
     def main
-        if session[:login_uid] && session[:login_pass]
+        if session[:uid]
             @tweets = Tweet.all
             render top_main_path
         else
@@ -9,20 +9,23 @@ class TopController < ApplicationController
     end
     
     def login
-        login_password = BCrypt::Password.create(params[:pass])
-        if login_password == params[:pass]
-            session[:login_uid] = params[:uid]
-            session[:login_pass] = params[:pass]
-            p "ログイン成功"
-            redirect_to top_main_path
+        user = User.find_by(uid: params[:uid])
+        if user
+            login_password = BCrypt::Password.new(user.pass)
+            if login_password == params[:pass]
+                session[:uid] = user.uid
+                redirect_to top_main_path
+            else
+                flash[:info] = "入力情報に誤りがあります"
+                render top_login_path
+            end
         else
             render top_login_path
         end
     end
     
     def logout
-        session.delete(:login_uid)
-        session.delete(:login_pass)
-        redirect_to root_path
+        session.delete(:uid)
+        redirect_to top_main_path
     end
 end

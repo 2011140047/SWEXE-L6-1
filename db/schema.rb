@@ -10,25 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_17_170521) do
+ActiveRecord::Schema.define(version: 2022_10_15_155345) do
 
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tweet_id"
-    t.integer "top_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tops", force: :cascade do |t|
-    t.string "uid"
-    t.string "pass"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "tweets", force: :cascade do |t|
     t.string "message"
+    t.datetime "tdate"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
