@@ -10,8 +10,10 @@
 <%= form_for @user , tdate: {action: :create} do |f| %>
     <p><%= f.label :uid, 'id : ' %>
     <%= f.text_field :uid %></p>
-    <p><%= f.label :pass, 'password : ' %>
-    <%= f.password_field :pass %></p>
+    <p><%= f.label :password, 'password : ' %>
+    <%= f.password_field :password %></p>
+    <p><%= f.label :password_confirmation, 'password(confirmation)' %>
+    <%= f.password_field :password_confirmation %></p>
     <%= f.submit '登録' %>
 <% end %>
 

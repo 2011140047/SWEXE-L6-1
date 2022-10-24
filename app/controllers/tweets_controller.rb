@@ -8,12 +8,12 @@ class TweetsController < ApplicationController
   end
 
   def create
-    tweet = Tweet.new(message: params[:tweet][:message], tdate: Time.current)
+    user = User.find_by(uid: session[:uid])
+    tweet = Tweet.new(message: params[:tweet][:message], tdate: Time.current, user_id: user.id)
     if tweet.save
-      flash[:notice] = '1レコード追加しました'
       redirect_to tweets_path
     else
-      render tweets_new_path
+      render new_tweet_path
     end
   end
 
